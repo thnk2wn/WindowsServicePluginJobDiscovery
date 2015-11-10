@@ -3,8 +3,6 @@ using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.IO;
 using System.Linq;
-using CyberCoders.Background.Diagnostics;
-using CyberCoders.Core.System;
 using Cyrus.Plugin.Common;
 using Microsoft.Owin.Hosting;
 using NLog;
@@ -13,7 +11,7 @@ using Quartz.Impl;
 
 namespace Cyrus.MicroServices
 {
-    internal class WindowsService : DisposableObject
+    internal class WindowsService : IDisposable
     {
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         private IDisposable _webApp;
@@ -26,7 +24,7 @@ namespace Cyrus.MicroServices
         public void Start()
         {
             if (Environment.UserInteractive)
-                Logger.ConsoleLog(LogLevel.Info, "Service is starting. Press Ctrl+C to cancel/stop at any time...");
+                Console.WriteLine("Service is starting. Press Ctrl+C to cancel/stop at any time...");
             else
                 Logger.Info("Service is starting; creating job scheduler");
 
@@ -114,7 +112,7 @@ namespace Cyrus.MicroServices
             TeardownPerformed = true;
         }
 
-        protected override void DisposeManagedResources()
+        public void Dispose()
         {
             Teardown();
         }

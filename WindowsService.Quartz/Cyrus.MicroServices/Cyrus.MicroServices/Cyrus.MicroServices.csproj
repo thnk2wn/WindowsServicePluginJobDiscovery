@@ -45,14 +45,6 @@
       <HintPath>..\packages\Common.Logging.Core.3.0.0\lib\net40\Common.Logging.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="CyberCoders.Background, Version=1.8.5508.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CyberCoders.Background.1.8.5508\lib\net45\CyberCoders.Background.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="CyberCoders.Core, Version=1.22.5943.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CyberCoders.Core.1.22.5943\lib\net45\CyberCoders.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="JetBrains.Annotations, Version=9.2.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
       <HintPath>..\packages\JetBrains.Annotations.9.2.0\lib\net20\JetBrains.Annotations.dll</HintPath>
       <Private>True</Private>

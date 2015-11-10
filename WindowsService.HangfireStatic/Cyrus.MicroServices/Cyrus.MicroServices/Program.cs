@@ -1,6 +1,5 @@
 ﻿using System;
-using CyberCoders.Background.Diagnostics;
-using CyberCoders.Core.Diagnostics;
+using System.Diagnostics;
 using NLog;
 using Topshelf;
 
@@ -15,14 +14,14 @@ namespace Cyrus.MicroServices
         {
             try
             {
-                WindowsEventLog.FailureAction = (exception, type)
-                    => Logger.Error($"Failed to write message of type {type} to Windows event log: {exception}");
                 HostFactory.Run(WindowsServiceConfiguration.Configure);
             }
             catch (Exception ex)
             {
-                WindowsEventLog.TryWriteError($"Critical error in app setup: {ex}");
-                Logger.ConsoleFatal(ex);
+                Trace.WriteLine($"Critical error in app setup: {ex}");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Error.WriteLine(ex.ToString());
+                
                 throw;
             }
         }
